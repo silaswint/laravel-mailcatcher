@@ -1,0 +1,26 @@
+{
+    "name": "silaswinter/laravel-mailcatcher",
+    "require": {
+        "spatie/laravel-package-tools": "^1.16",
+        "illuminate/support": "^10 || ^11",
+        "illuminate/mail": "^10 || ^11",
+        "illuminate/config": "^10 || ^11",
+        "laravel/framework": "^10 || ^11",
+        "aws/aws-sdk-php": "^3.295.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "SilasWinter\\MailCatcher\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SilasWinter\\MailCatcher\\MailCatcherServiceProvider"
+            ]
+        },
+        "aws/aws-sdk-php": [
+            "Ses"
+        ]
+    }
+}
