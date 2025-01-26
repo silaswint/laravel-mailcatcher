@@ -16,8 +16,8 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\Exception\TransportException;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\Exception\UnexpectedResponseException;
-use Symfony\Component\Mailer\Transport\Smtp\Auth;
-use Symfony\Component\Mailer\Transport\Smtp\Auth\AuthenticatorInterface;
+use Symfony\Component\Mailer\Transport\Smtp\Auth as BaseAuth;
+use Symfony\Component\Mailer\Transport\Smtp\Auth\AuthenticatorInterface as BaseAuthenticatorInterface;
 use Symfony\Component\Mailer\Transport\Smtp\Stream\AbstractStream;
 use Symfony\Component\Mailer\Transport\Smtp\Stream\SocketStream;
 
@@ -109,7 +109,7 @@ class EsmtpTransport extends Smtp
         }
     }
 
-    public function addAuthenticator(AuthenticatorInterface $authenticator): void
+    public function addAuthenticator(BaseAuthenticatorInterface $authenticator): void
     {
         $this->authenticators[] = $authenticator;
     }
@@ -191,6 +191,7 @@ class EsmtpTransport extends Smtp
         $errors = [];
         $modes = array_map('strtolower', $modes);
         foreach ($this->authenticators as $authenticator) {
+            /** @var \Symfony\Component\Mailer\Transport\Smtp\Auth\CramMd5Authenticator $authenticator */
             if (! \in_array(strtolower($authenticator->getAuthKeyword()), $modes, true)) {
                 continue;
             }
