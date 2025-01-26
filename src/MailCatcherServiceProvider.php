@@ -30,10 +30,8 @@ class MailCatcherServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        // Konfiguration erweitern
         $this->mergeConfigFrom(__DIR__.'/../config/mailcatcher.php', 'mailcatcher');
 
-        // `mail.php` um `mailcatcher` erweitern
         config()->set('mail.mailers.mailcatcher', [
             'transport' => 'mailcatcher',
             'layer' => config('mailcatcher.layer'),

@@ -19,7 +19,7 @@ trait OverrideAddress
      */
     protected function doSend(SentMessage $message): void
     {
-        // replace all recipients with test@test.de
+        // replace all recipients with config('mailcatcher.address'), f.E. mailcatcher+maxmustermann@web.de
         $newRecipients = collect($message->getEnvelope()->getRecipients())
             ->map(function (Address $address) {
                 $newEmail = MailCatcher::getEmail($address->getAddress());
