@@ -1,5 +1,5 @@
 {
-    "name": "silaswinter/laravel-mailcatcher",
+    "name": "silaswint/laravel-mailcatcher",
     "require": {
         "spatie/laravel-package-tools": "^1.16",
         "illuminate/support": "^10 || ^11",

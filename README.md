@@ -9,7 +9,7 @@ Follow these steps to install Mailcatcher for Laravel:
 
 1. Run the composer command to add the package to your project:
    ```bash
-   composer require silaswinter/laravel-mailcatcher
+   composer require silaswint/laravel-mailcatcher
    ```
 
 2. Append the following configuration settings to your `.env` file:
